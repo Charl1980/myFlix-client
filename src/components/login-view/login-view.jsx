@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Container, Row, Col, Card, CardGroup, Form, Button } from 'react-bootstrap';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -8,24 +9,35 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
+    //SEND A REQUEST TO THE SERVER FOR AUTHENTIFICATION, THEN CALL props.onLoggedIn(username)
     props.onLoggedIn(username);
   };
 
   return (
-    <div>
-      <form>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-      </form>
-      <button>Sign up</button>
-    </div>
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col md={8}>
+          <CardGroup>
+            <Card className="mt-3" bg="light">
+              <Card.Body>
+                <Card.Title>Please Login</Card.Title>
+                <Form>
+                  <Form.Group className="mb-3" controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                  </Form.Group>
+                  <Button variant="dark" type="submit" onClick={handleSubmit}>Submit</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
