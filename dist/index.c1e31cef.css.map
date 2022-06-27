@@ -1,0 +1,1 @@
+{"mappings":";ACGA;EACE;EACA","sources":["src/components/movie-view/movie-view.scss","src/index.scss"],"sourcesContent":[null,"$color: rgb(64, 64, 64);\n$bgcolor: black;\n\nbody {\n  background-color: $bgcolor  !important;\n  color: $color  !important;\n}"],"names":[],"version":3,"file":"index.c1e31cef.css.map","sourceRoot":"/__parcel_source_root/"}
