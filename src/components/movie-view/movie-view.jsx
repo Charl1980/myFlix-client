@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, ListGroup, Card, Button, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
   render() {
@@ -28,6 +29,9 @@ export class MovieView extends React.Component {
                   <div>Genre:</div>
                   {movie.Genre.Name}
                 </div>
+                <Link to={`/genres/${movie.Genre.Name}`}>
+                  <Button variant="link">Genre</Button>
+                </Link>
               </ListGroup.Item>
               <ListGroup.Item
                 className="movie-description d-flex justify-content-between align-items-start"
@@ -44,6 +48,9 @@ export class MovieView extends React.Component {
                   <div>Director:</div>
                   {movie.Director.Name}
                 </div>
+                <Link to={`/directors/${movie.Director.Name}`}>
+                  <Button variant="link">Director</Button>
+                </Link>
               </ListGroup.Item>
               <ListGroup.Item
                 className="movie-actors d-flex justify-content-between align-items-start"
