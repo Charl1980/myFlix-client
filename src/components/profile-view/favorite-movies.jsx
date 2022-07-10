@@ -3,7 +3,9 @@ import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './profile-view.scss';
 
-export function FavoriteMovies({ favoriteMovies }) {
+export function FavoriteMovies(props) {
+  const { favoriteMovies } = props;
+
   return (
     <Card>
       <Card.Body>
@@ -15,7 +17,7 @@ export function FavoriteMovies({ favoriteMovies }) {
         <Row>
           {favoriteMovies.map((movie) => {
             return (
-              <Col xs={12} md={6} lg={3} key={movie._id} className="fav-movie">
+              <Col xs={12} md={6} lg={3} className="fav-movie">
                 <Card>
                   <Link to={`/movies/${movie._id}`}>
                     <Card.Image variant="top" src={movie.ImageURL} />
@@ -35,4 +37,4 @@ export function FavoriteMovies({ favoriteMovies }) {
   )
 }
 
-//export default FavoriteMovies
+export default FavoriteMovies
