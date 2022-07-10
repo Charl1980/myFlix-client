@@ -60,8 +60,10 @@ export class MovieView extends React.Component {
                   {movie.Actors}
                 </div>
               </ListGroup.Item>
+              <ListGroup.Item>
+                <Button className="" onClick={() => { onBackClick(null); }} variant="secondary">Back</Button>
+              </ListGroup.Item>
             </ListGroup>
-            <Button className="mt-3" onClick={() => { onBackClick(null); }} variant="secondary">Back</Button>
           </Col>
         </Row >
       </Container>
