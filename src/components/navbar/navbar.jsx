@@ -31,10 +31,10 @@ export function Menubar({ user }) {
             {isAuth() && (
               <Button variant="link" onClick={onLoggedOut}>Logout</Button>
             )}
-            {isAuth() && (
+            {!isAuth() && (
               <Nav.Link href="/">Login</Nav.Link>
             )}
-            {isAuth() && (
+            {!isAuth() && (
               <Nav.Link href="/register">Sign-up</Nav.Link>
             )}
           </Nav>
