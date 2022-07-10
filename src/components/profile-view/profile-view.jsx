@@ -37,9 +37,7 @@ export function ProfileView(props) {
         localStorage.clear();
         window.open('./register', '_self');
       })
-      .catch(function (error) {
-        console.log(error)
-      });
+      .catch(error => console.error(error))
   }
 
   return (
