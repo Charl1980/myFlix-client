@@ -1,11 +1,50 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, ListGroup, Card, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { FavouriteMovies: [], };
+  }
+
+  addFavMovie = () => {
+    let token = localStorage.getItem('token');
+    let user = localStorage.getItem("user");
+    let userFavMovies = this.state.FavouriteMovies;
+    let isFav = userFavMovies.includes(this.props.movie._id);
+    if (!isFav) {
+      axios.post(`https://myflix-movies1980.herokuapp.com/users/${user}/movies/${this.props.movie._id}`, {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }).then((response) => {
+          console.log(response.data);
+          alert(
+            `${this.props.movie.Title} has been added to your favorites`
+          );
+          window.open(`/movies/${this.props.movie._id}`, "_self");
+        })
+        .catch(e => {
+          console.log('Error')
+        });
+    } else if (isFav) {
+      alert(
+        `${this.props.movie.Title} is already in your favorites`
+      );
+    }
+  }
+
   render() {
     const { movie, onBackClick } = this.props;
+    const { FavouriteMovies } = this.state;
+    let userFavMovies = this.state.FavouriteMovies;
+    let isFav = userFavMovies.includes(this.props.movie._id);
+
     return (
       <Container>
         <Row className="movie-view">
@@ -61,7 +100,8 @@ export class MovieView extends React.Component {
                 </div>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Button className="" onClick={() => { onBackClick(null); }} variant="secondary">Back</Button>
+                <Button variant="secondary" type="submit" onClick={this.addFavMovie}>Add to favorites</Button>
+                <Button className="ml-3" onClick={() => { onBackClick(null); }} variant="secondary">Back</Button>
               </ListGroup.Item>
             </ListGroup>
           </Col>
@@ -85,26 +125,3 @@ MovieView.propTypes = {
     Actors: PropTypes.array.isRequired
   }).isRequired
 };
-
-//<div className="movie-title">
-//<span className="label">Title: </span>
-//<span className="value">{movie.Title}</span>
-//</div>
-//<div className="movie-genre">
-//<span className="label">Genre: </span>
-//<span className="value">{movie.Genre.Name}</span>
-//</div>
-//<div className="movie-description">
-//<span className="label">Description: </span>
-//<span className="value">{movie.Description}</span>
-//</div>
-//<div className="movie-director">
-//<span className="label">Director: </span>
-//<span className="value">{movie.Director.Name}</span>
-//</div>
-//<div className="movie-actors">
-//<span className="label">Actors: </span>
-//<span className="value">{movie.Actors}</span>
-//</div>
-
-//className="ms-2 me-auto"
