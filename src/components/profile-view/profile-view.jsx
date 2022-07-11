@@ -91,20 +91,3 @@ export function ProfileView(props) {
     </Container>
   );
 }
-
-//<Col xs={12} sm={4}>
-//<Card>
-//  <Card.Body>
-//    <UserInfo name={user.Username} email={user.Email} />
-//  </Card.Body>
-//</Card>
-//</Col>
-//<Row>
-//<Col xs={12} sm={8}>
-//  <Card>
-//    <Card.Body>
-
-//    </Card.Body>
-//  </Card>
-//</Col>
-//</Row>
