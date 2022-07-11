@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './profile-view.scss';
 
 export function FavoriteMovies(props) {
-  const { favoriteMovies } = props;
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   return (
     <Card>
