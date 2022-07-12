@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './profile-view.scss';
 
 export function FavoriteMovies(props) {
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const { favoriteMovies, movies } = props;
 
   return (
     <Card>
@@ -15,21 +15,23 @@ export function FavoriteMovies(props) {
           </Col>
         </Row>
         <Row>
-          {favoriteMovies.map((movie) => {
-            return (
-              <Col xs={12} md={6} lg={3} className="fav-movie">
-                <Card>
-                  <Link to={`/movies/${movie._id}`}>
-                    <Card.Image variant="top" src={movie.ImageURL} />
-                    <Card.Body>
-                      <Card.Title>{movie.Title}</Card.Title>
-                    </Card.Body>
-                  </Link>
-                </Card>
-                <Button variant="secondary" onClick={() => removeFav(movie._id)}>Remove</Button>
-              </Col>
-            )
-          })
+          {favoriteMovies.length === 0 && <div className="text-center">Empty</div>}
+          {favoriteMovies.length > 0 &&
+            movies.map((movie) => {
+              if (movie._id === favoriteMovies.find((fav) => fav === movie._id)) {
+                return (
+                  <Col xs={12} md={6} lg={3} key={movie._id} className="fav-movie">
+                    <Card className="favorites-item card-content">
+                      <Card.Image className="movieCard" variant="top" src={movie.ImageURL} crossOrigin="anonymous" />
+                      <Card.Body>
+                        <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
+                      </Card.Body>
+                    </Card>
+                    <Button variant="secondary" onClick={() => removeFav(movie._id)}>Remove</Button>
+                  </Col>
+                )
+              }
+            })
           }
         </Row>
       </Card.Body>
