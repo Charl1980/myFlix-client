@@ -85,7 +85,7 @@ export function ProfileView(props) {
           </Card>
         </Col>
       </Row>
-      <FavoriteMovies favoriteMovies={favoriteMovies} />
+      <FavoriteMovies favoriteMovies={favoriteMovies} movies={movies} />
 
       <Button variant="dark" onClick={handleDelete}>Delete profile</Button>
     </Container>
