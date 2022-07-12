@@ -49,7 +49,7 @@ export class MovieView extends React.Component {
       <Container>
         <Row className="movie-view">
           <Col sm={12} md={4}>
-            <Image className="movie-poster" src={movie.ImageURL} />
+            <Image className="mt-3 movie-poster" src={movie.ImageURL} />
           </Col>
           <Col sm={12} md={8}>
             <ListGroup className="mt-3">
