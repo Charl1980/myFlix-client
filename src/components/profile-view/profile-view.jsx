@@ -35,59 +35,62 @@ export function ProfileView(props) {
       .then(() => {
         alert(`The account ${user.Username} was successfully deleted.`)
         localStorage.clear();
-        window.open('./register', '_self');
+        window.open('/register', '_self');
       })
       .catch(error => console.error(error))
   }
 
   return (
     <Container>
-      <Row className="mt-4 justify-content-md-center">
-        <Col xs={12} md={4}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Your profile</Card.Title>
-              <Row>
-                <Col className="font-weight-bold label">Username:</Col>
-              </Row>
-              <Row className="mb-3">
-                <Col className="value">{user.Username}</Col>
-              </Row>
-              <Row>
-                <Col className="font-weight-bold label">Password:</Col>
-              </Row>
-              <Row className="mb-3">
-                <Col className="value">********</Col>
-              </Row>
-              <Row>
-                <Col className="font-weight-bold label">Email:</Col>
-              </Row>
-              <Row className="mb-3">
-                <Col className="value">{user.Email}</Col>
-              </Row>
-              <Row>
-                <Col className="font-weight-bold label">Birthday:</Col>
-              </Row>
-              <Row>
-                <Col className="value">{user.Birthday}</Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col xs={12} md={8}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Update your profile</Card.Title>
-              <Row>
-                <UpdateUser user={user} />
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <FavoriteMovies favoriteMovies={favoriteMovies} movies={movies} />
-
-      <Button variant="dark" onClick={handleDelete}>Delete profile</Button>
+      <Card className="p-3">
+        <Row className="justify-content-md-center">
+          <Col xs={12} md={4}>
+            <Card>
+              <Card.Body>
+                <Card.Title>Your profile</Card.Title>
+                <Row>
+                  <Col className="font-weight-bold label">Username:</Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col className="value">{user.Username}</Col>
+                </Row>
+                <Row>
+                  <Col className="font-weight-bold label">Password:</Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col className="value">********</Col>
+                </Row>
+                <Row>
+                  <Col className="font-weight-bold label">Email:</Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col className="value">{user.Email}</Col>
+                </Row>
+                <Row>
+                  <Col className="font-weight-bold label">Birthday:</Col>
+                </Row>
+                <Row>
+                  <Col className="value">{user.Birthday}</Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs={12} md={8}>
+            <Card>
+              <Card.Body>
+                <Card.Title>Update your profile</Card.Title>
+                <Row>
+                  <UpdateUser user={user} />
+                </Row>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <FavoriteMovies favoriteMovies={favoriteMovies} movies={movies} />
+        <Card.Body>
+          <Button variant="dark" onClick={handleDelete}>Delete profile</Button>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }
