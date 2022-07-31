@@ -48598,9 +48598,22 @@ function movies(state = [], action) {
             return state;
     }
 }
+function user(state = '', action) {
+    switch(action.type){
+        case _actions.SET_USER:
+            return action.user || localStorage.getItem('user') || '';
+        case _actions.ADD_FAVMOVIE:
+            return action.value;
+        case _actions.REM_FAVMOVIE:
+            return action.value;
+        default:
+            return state;
+    }
+}
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
-    movies
+    movies,
+    user
 });
 exports.default = moviesApp;
 
