@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Routes } from 'react-router-dom';
-import { setMovies } from '../../actions/actions';
+import {
+  setMovies,
+  setUser
+} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 //React-Bootstrap Imports
 import { Container, Row, Col, Button } from 'react-bootstrap';
