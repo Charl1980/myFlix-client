@@ -1,5 +1,7 @@
-$color: steelblue;
+$color: rgb(64, 64, 64);
+$bgcolor: black;
 
-.my-flix {
-  color: $color;
+body {
+  background-color: $bgcolor  !important;
+  color: $color  !important;
 }
