@@ -5,7 +5,7 @@ import { legacy_createStore as createStore } from 'redux';
 import { Provider } from 'react-redux';
 import moviesApp from './reducers/reducers';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import { MainView } from './components/main-view/main-view';
+import MainView from './components/main-view/main-view';
 
 //IMPORT STATEMENT TO INDICATE THAT YOU NEED TO BUNDLE `./index.scss`
 import './index.scss';
