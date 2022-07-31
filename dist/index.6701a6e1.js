@@ -47692,12 +47692,27 @@ parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
 );
 parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
 );
+parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
+);
+parcelHelpers.export(exports, "ADD_FAVMOVIE", ()=>ADD_FAVMOVIE
+);
+parcelHelpers.export(exports, "REM_FAVMOVIE", ()=>REM_FAVMOVIE
+);
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
 parcelHelpers.export(exports, "setFilter", ()=>setFilter
 );
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
+parcelHelpers.export(exports, "addFavMovie", ()=>addFavMovie
+);
+parcelHelpers.export(exports, "remFavMovie", ()=>remFavMovie
+);
 const SET_MOVIES = 'SET_MOVIES';
 const SET_FILTER = 'SET_FILTER';
+const SET_USER = 'SET_USER';
+const ADD_FAVMOVIE = 'ADD_FAVMOVIE';
+const REM_FAVMOVIE = 'REM_FAVMOVIE';
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -47707,6 +47722,24 @@ function setMovies(value) {
 function setFilter(value) {
     return {
         type: SET_FILTER,
+        value
+    };
+}
+function setUser(user) {
+    return {
+        type: SET_USER,
+        user: user?.Username
+    };
+}
+function addFavMovie(value) {
+    return {
+        type: ADD_FAVMOVIE,
+        value
+    };
+}
+function remFavMovie(value) {
+    return {
+        type: REM_FAVMOVIE,
         value
     };
 }
