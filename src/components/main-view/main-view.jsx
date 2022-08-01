@@ -76,7 +76,7 @@ class MainView extends React.Component {
 
   render() {
     let { movies } = this.props;
-    let { user } = this.state;
+    let { user } = this.props;
 
     return (
       <Router>
@@ -159,8 +159,11 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
-}
+  return {
+    movies: state.movies,
+    user: state.user
+  };
+};
 
 export default connect(mapStateToProps, { setMovies })(MainView);
 
