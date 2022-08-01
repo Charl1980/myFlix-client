@@ -13,7 +13,7 @@ export function setFilter(value) {
 }
 
 export function setUser(user) {
-  return { type: SET_USER, user: user?.Username };
+  return { type: SET_USER, user };
 }
 
 export function addFavMovie(value) {
