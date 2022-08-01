@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { setUser } from '../../actions/actions';
+import { connect } from 'react-redux';
 import { Container, Row, Col, Card, CardGroup, Form, Button } from 'react-bootstrap';
 
-export function LoginView(props) {
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+function LoginView({ user, setUser, onLoggedIn }) {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +24,7 @@ export function LoginView(props) {
     })
       .then(response => {
         const data = response.data;
-        props.onLoggedIn(data);
+        onLoggedIn(data);
       })
       .catch(e => {
         console.log('no such user')
@@ -60,3 +69,5 @@ LoginView.propTypes = {
   }),
   onLoggedIn: PropTypes.func.isRequired
 };
+
+export default connect(mapStateToProps, { setUser })(LoginView);
